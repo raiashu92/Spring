@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.List;
 /*
     2 setups:
@@ -21,8 +23,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     //EmployeeRepository repository = new EmployeeRepositoryImpl();
     EmployeeRepository repository;
 
+    @Autowired
+    LocalDateTime adjustedTime;
+
+    @Autowired
+    Calendar adjCalendar;
+
     public EmployeeServiceImpl() {
-        System.out.println("EmployeeServiceImpl: no args constructor");
+        System.out.println("EmployeeServiceImpl: no args constructor ");
     }
 
     //for constructor injection
@@ -33,7 +41,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @PostConstruct
     public void printAfterConstruct() {
-        System.out.println("EmployeeServiceImpl: post construct");
+        System.out.println("EmployeeServiceImpl: post construct " + adjustedTime + " cal: " + adjCalendar.getTime());
     }
 
     @Autowired

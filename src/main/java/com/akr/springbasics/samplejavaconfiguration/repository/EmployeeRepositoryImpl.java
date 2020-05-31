@@ -1,10 +1,12 @@
 package com.akr.springbasics.samplejavaconfiguration.repository;
 
 import com.akr.springbasics.samplejavaconfiguration.model.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,14 +14,17 @@ import java.util.List;
 public class EmployeeRepositoryImpl implements EmployeeRepository {
     List<Employee> employees = new ArrayList<>();
 
+    @Autowired
+    LocalDateTime defaultTime;
+
     public EmployeeRepositoryImpl() {
-        System.out.println("EmployeeRepositoryImpl: in no args contructor");
+        System.out.println("EmployeeRepositoryImpl: in no args contructor ");
         this.employees = new ArrayList<>();
     }
 
     @PostConstruct
     public void printAfterConstruct() {
-        System.out.println("EmployeeRepositoryImpl: after construct");
+        System.out.println("EmployeeRepositoryImpl: after construct " + defaultTime);
     }
 
     @PreDestroy
