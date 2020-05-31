@@ -5,8 +5,10 @@
                         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean name="employeeRepo" class="com.akr.springbasics.samplexmlconfiguration.repository.EmployeeRepositoryImpl"/>
+    <bean name="printer" class="com.akr.springbasics.samplexmlconfiguration.service.PrintSomething" />
 
     <bean name="employeeService" class="com.akr.springbasics.samplexmlconfiguration.service.EmployeeServiceImpl">
         <property name="employeeRepository" ref="employeeRepo"/>
+        <constructor-arg index="0" ref="printer" />
     </bean>
 </beans>
