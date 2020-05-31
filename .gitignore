@@ -1,0 +1,22 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# folders
+out/
+.idea/
+*.iml
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.tar.gz
+*.rar
