@@ -12,6 +12,6 @@ public class Application {
         applicationContext.refresh();
 
         EmployeeService employeeService = applicationContext.getBean("employeeService", EmployeeService.class);
-        System.out.println("current employees are: " + employeeService.findAll());
+        System.out.println("Application: current employees are: " + employeeService.findAll());
     }
 }

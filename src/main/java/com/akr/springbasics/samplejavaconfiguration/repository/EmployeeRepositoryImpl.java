@@ -3,6 +3,8 @@ package com.akr.springbasics.samplejavaconfiguration.repository;
 import com.akr.springbasics.samplejavaconfiguration.model.Employee;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,16 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     public EmployeeRepositoryImpl() {
         System.out.println("EmployeeRepositoryImpl: in no args contructor");
         this.employees = new ArrayList<>();
+    }
+
+    @PostConstruct
+    public void printAfterConstruct() {
+        System.out.println("EmployeeRepositoryImpl: after construct");
+    }
+
+    @PreDestroy
+    public void printStrBeforeDestroy() {
+        System.out.println("EmployeeRepositoryImpl: before destroy");
     }
 
     public List<Employee> findAll() {

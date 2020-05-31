@@ -5,6 +5,8 @@ import com.akr.springbasics.samplejavaconfiguration.repository.EmployeeRepositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.List;
 /*
     2 setups:
@@ -29,6 +31,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         this.repository = repository;
     }
 
+    @PostConstruct
+    public void printAfterConstruct() {
+        System.out.println("EmployeeServiceImpl: post construct");
+    }
+
     @Autowired
     public void setRepository(EmployeeRepository repository) {
         System.out.println("EmployeeServiceImpl: in setter");
@@ -37,5 +44,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     public List<Employee> findAll() {
         return repository.findAll();
+    }
+
+    @PreDestroy
+    public void printBeforeDestroy() {
+        System.out.println("EmployeeServiceImpl: print before destroy");
     }
 }

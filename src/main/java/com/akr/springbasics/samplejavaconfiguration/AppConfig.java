@@ -14,9 +14,14 @@ public class AppConfig {
 
     /*
     *****
-    Instead of wiring manually and creating beans here, we can use auto wiring.
-
-    Add @ComponentScan and use stereotype annotations where valid.
+    * Note:
+        1) Manually create beans and invoke constructor or setter injection.
+        2) Instead of wiring manually and creating beans here, we can use auto wiring.
+        3) Add @ComponentScan and use stereotype annotations where valid to auto-wire.
+        4) This class will not be required if using auto-wiring, the main class where application context is being
+           called can be used for that purpose. Add @ComponentScan annotation to main class.
+        5) If Java based configuration is used, create AnnotationConfigApplicationContext object.
+           For XML based configuration, use ClassPathXmlApplicationContext object.
     *****
      */
 
