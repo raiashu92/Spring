@@ -3,6 +3,7 @@ package com.akr.springbasics.samplejavaconfiguration.service;
 import com.akr.springbasics.samplejavaconfiguration.model.Employee;
 import com.akr.springbasics.samplejavaconfiguration.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -29,6 +30,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     Calendar adjCalendar;
 
+    @Value("#{ T(java.lang.Math).random() * 100 }")
+    private double seedNum;
+
     public EmployeeServiceImpl() {
         System.out.println("EmployeeServiceImpl: no args constructor ");
     }
@@ -41,7 +45,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @PostConstruct
     public void printAfterConstruct() {
-        System.out.println("EmployeeServiceImpl: post construct " + adjustedTime + " cal: " + adjCalendar.getTime());
+        System.out.println("EmployeeServiceImpl: post construct " + adjustedTime + " cal: " + adjCalendar.getTime()
+        + " seedNum: " +  seedNum);
     }
 
     @Autowired
@@ -58,4 +63,5 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void printBeforeDestroy() {
         System.out.println("EmployeeServiceImpl: print before destroy");
     }
+
 }
